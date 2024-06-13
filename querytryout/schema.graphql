@@ -1,0 +1,9 @@
+type TitleEscrowCreated @entity(immutable: true) {
+  id: Bytes!
+  titleEscrow: Bytes! # address
+  tokenRegistry: Bytes! # address
+  tokenId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

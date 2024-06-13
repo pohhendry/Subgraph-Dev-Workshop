@@ -1,0 +1,26 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: TitleEscrowFactory
+    network: mainnet
+    source:
+      address: "0xA38CC56c9291B9C1f52F862dd92326d352e710b8"
+      abi: TitleEscrowFactory
+      startBlock: 16047114
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TitleEscrowCreated
+      abis:
+        - name: TitleEscrowFactory
+          file: ./abis/TitleEscrowFactory.json
+      eventHandlers:
+        - event: TitleEscrowCreated(indexed address,indexed address,indexed uint256)
+          handler: handleTitleEscrowCreated
+      file: ./src/title-escrow-factory.ts
